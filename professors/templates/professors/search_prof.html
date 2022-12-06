@@ -11,7 +11,7 @@
             <p>{{ prof.name }}</p>
             <p>{{ prof.email }}</p>
             <p>{{ prof.avgRate }}</p>
-            <p><a class="underline text-blue-500" href="{% url 'prof_course' 'bita' %}">Click to Jump</a></p>
+            <p><a class="underline text-blue-500" href="{% url 'prof_course' 1 %}">Click to Jump</a></p>
         {% endfor %}
     </div>
 {% endblock %}
