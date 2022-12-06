@@ -3,7 +3,8 @@
 {% block content %}
     <!-- Landing Page (Mina) -->
     <div>
-        This is landing page 
-        <a href="https://www.ratemyprofessors.com/ ">Here</a>
+        <p>This is landing page</p>
+        <p><a class="underline text-blue-500" href="{% url 'search_prof' 'bita' %}">Search by professor's name</a></p>
+        <p><a class="underline text-blue-500" href="{% url 'search_course' 'CPSC' 1050 %}">Search by course</a></p>
     </div>
 {% endblock %}

@@ -1,6 +1,7 @@
 {% extends 'professors/base.html' %}
 {% block content %}
     <div>
-        Searched by professor's name
+        <p>Course list taught by the professor</p>
+        <p><a class="underline text-blue-500" href="{% url 'course_ratings' 1 'CPSC1050' %}">See ratings</a></p>
     </div>
 {% endblock %}
