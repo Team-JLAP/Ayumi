@@ -9,5 +9,10 @@
         <p>this is result of your search</p>
         <a href="https://www.ratemyprofessors.com/search/teachers?query=a&sid=U2Nob29sLTQwMTg=">Here</a>
         <p>searched by {{ search_term }}</p>
+        {% for prof in results %}
+            <p>{{ prof.name }}</p>
+            <p>{{ prof.email }}</p>
+            <p>{{ prof.avgRate }}</p>
+        {% endfor %}
     </div>
 {% endblock %}
