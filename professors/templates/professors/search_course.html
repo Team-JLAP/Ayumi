@@ -1,0 +1,7 @@
+{% extends 'professors/base.html' %}
+{% block content %}
+    <div>
+        <p>Here is a list of professors</p>
+        <p><a class="underline text-blue-500" href="{% url 'course_ratings' 1 'CPSC1050' %}">Click one of the professors from list</a></p>
+    </div>
+{% endblock %}
