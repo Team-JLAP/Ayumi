@@ -27,6 +27,7 @@ class Course(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    school = models.ForeignKey(School, on_delete=models.SET_NULL, null=True)
     major = models.CharField(max_length=30, blank=True, null=True)
     
 @receiver(post_save, sender=User)
