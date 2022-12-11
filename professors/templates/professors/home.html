@@ -1,10 +1,34 @@
-{% extends 'professors/base.html' %}
+{% extends 'professors/base.html' %} {% block content %}
+<!-- Landing Page (Mina) -->
+{% load static %}
+<div>
+  <p>This is landing page</p>
+  <img src="{% static "admin/img/icon-clock.svg" %}" width="50px">
+  <p>
+    <a class="underline text-blue-500" href="{% url 'search_prof' 'bita' %}"
+      >Search by professor's name</a
+    >
+  </p>
+  <p>
+    <a
+      class="underline text-blue-500"
+      href="{% url 'search_course' 'CPSC' 1050 %}"
+      >Search by course</a
+    >
+  </p>
+</div>
+{% comment %} ここから下がVue.js {% endcomment %}
+<div id="app">
+  <div>[[ message ]]</div>
 
-{% block content %}
-    <!-- Landing Page (Mina) -->
-    <div>
-        <p>This is landing page</p>
-        <p><a class="underline text-blue-500" href="{% url 'search_prof' 'bita' %}">Search by professor's name</a></p>
-        <p><a class="underline text-blue-500" href="{% url 'search_course' 'CPSC' 1050 %}">Search by course</a></p>
-    </div>
-{% endblock %}
+  <script>
+    var app = new Vue({
+      delimiters: ["[[", "]]"],
+      el: "#app",
+      data: {
+        message: "Hello",
+      },
+    });
+  </script>
+  {% endblock %}
+</div>
