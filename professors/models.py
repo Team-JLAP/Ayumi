@@ -19,10 +19,10 @@ class Professor(models.Model):
 class Course(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     subject = models.CharField(max_length=30)
-    course_id = models.CharField(max_length=20, blank=True, null=True)
+    course_number = models.CharField(max_length=20, blank=True, null=True)
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
     def __str__(self):
-        return self.subject + self.course_id
+        return self.subject + self.course_number
 
 
 class Profile(models.Model):

@@ -57,6 +57,6 @@ def generateCourse(n):
         subject = professor.department
         courseList = courseIds[subject]
         index = random.randint(0, len(courseList)-1)
-        course_id = courseList[index]
-        Course.objects.create(school=school, subject=subject, course_id=course_id, professor=professor)
+        course_number = courseList[index]
+        Course.objects.create(school=school, subject=subject, course_number=course_number, professor=professor)
     
