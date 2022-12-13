@@ -1,16 +1,19 @@
-{% extends 'professors/base.html' %}
-{% block content %}
-    <!-- This is professors page (Ryota)  -->
-    <!-- /prof/<int:prof_id> 
-        eg) /prof/1 -->
+{% extends 'professors/base.html' %} {% block content %}
+<!-- This is couse ratings page (Ryota)  -->
 
-    <!-- I'll pass the data of prof such as avgRate, ratings... -->
-    <div>
-        <p>This is prof page</p>
-        <a href="https://www.ratemyprofessors.com/professor?tid=2240017">Here</a>
-        <p>name: {{ prof.name }}</p>
-        <p>email: {{ prof.email }}</p>
-        <p>avgRate: {{ prof.avgRate }}</p>
-    </div>
+<!-- given data
+professor: string
+school: string
+course: string
+avgRating: float
+similarCourses: Course[]
+ratings: Rating[]
+-->
+<div>
+  <p>This is Course ratings page</p>
+  {% for rating in ratings %}
+  <p>{{ rating.rate }}</p>
+  {% endfor %}
+</div>
 
 {% endblock %}
