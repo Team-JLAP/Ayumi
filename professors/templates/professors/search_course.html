@@ -1,7 +1,19 @@
-{% extends 'professors/base.html' %}
-{% block content %}
-    <div>
-        <p>Here is a list of professors</p>
-        <p><a class="underline text-blue-500" href="{% url 'course_ratings' 1 'CPSC1050' %}">Click one of the professors from list</a></p>
-    </div>
+{% extends 'professors/base.html' %} {% block content %}
+
+<!-- given data
+results: Course[]
+-->
+<div>
+  <p>Here is a list of professors</p>
+  {% for result in results %}
+  <p>
+    <a
+      class="underline text-blue-500"
+      href="{% url 'course_ratings' result.id %}"
+      >{{ result.professor.name}}</a
+    >
+  </p>
+  {% endfor %}
+</div>
+
 {% endblock %}
