@@ -27,6 +27,10 @@ def search_course(request, subject, course_number):
     courses = Course.objects.filter(subject=subject).filter(course_number=course_number)
     return render(request, 'professors/search_course.html', context={'results': courses})
 
+def search_subject(request, subject):
+    courses = Course.objects.filter(subject=subject)
+    return render(request, 'professors/search_subject.html', context={'results': courses})
+
 def prof_course(request, prof_id):
     professor = Professor.objects.get(id=prof_id)
     courses = Course.objects.filter(professor=professor)
