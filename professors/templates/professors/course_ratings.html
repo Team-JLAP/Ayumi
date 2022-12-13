@@ -11,6 +11,9 @@ ratings: Rating[]
 -->
 <div>
   <p>This is Course ratings page</p>
+  {% for rating in ratings %}
+  <p>{{ rating.rate }}</p>
+  {% endfor %}
 </div>
 
 {% endblock %}

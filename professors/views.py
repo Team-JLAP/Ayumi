@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from .dummy import generateProfList
 from .models import Course, Professor
 from django.db.models import Avg
 
@@ -20,16 +19,18 @@ def course_ratings(request, course_id):
     return render(request, 'professors/course_ratings.html', context=context)
 
 def search_prof(request, prof_name):
-    # profs = generateProfList(5)
     profs = Professor.objects.filter(name__contains=prof_name)
     context = {'search_term': prof_name, 'results': profs}
     return render(request, 'professors/search_prof.html', context=context)
 
 def search_course(request, subject, course_number):
-    return render(request, 'professors/search_course.html')
+    courses = Course.objects.filter(subject=subject).filter(course_number=course_number)
+    return render(request, 'professors/search_course.html', context={'results': courses})
 
 def prof_course(request, prof_id):
-    return render(request, 'professors/prof_course.html')
+    professor = Professor.objects.get(id=prof_id)
+    courses = Course.objects.filter(professor=professor)
+    return render(request, 'professors/prof_course.html', context={'courses': courses})
 
 def rating(request, prof_id, course_name):
     return render(request, 'professors/rating.html', context={'prof_id': prof_id})

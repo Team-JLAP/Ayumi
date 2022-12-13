@@ -3,18 +3,6 @@ import random
 from .models import School, Professor, Course, Rating, Profile
 from django.contrib.auth.models import User
 
-def generateProfList(numOfProf):
-    profs = []
-    fake = Faker()
-    for i in range(numOfProf):
-        prof = {
-            'name': fake.name(),
-            'email': fake.email(),
-            'avgRate': round(random.random() * 5, 2)
-        }
-        profs.append(prof)
-    return profs
-
 def generateUser(n):
     fake=Faker()
     for i in range(n):

@@ -2,9 +2,13 @@
 <div>
   <p>Course list taught by the professor</p>
   <p>
-    <a class="underline text-blue-500" href="{% url 'course_ratings' 2 %}"
-      >See ratings</a
-    >
+    {% for course in courses %}
+      <p>
+        <a class="underline text-blue-500" href="{% url 'course_ratings' course.id %}">
+          {{ course.subject }}{{ course.course_number }}
+        </a>
+      </p>
+    {% endfor %}
   </p>
 </div>
 {% endblock %}

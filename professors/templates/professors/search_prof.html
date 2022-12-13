@@ -7,6 +7,14 @@
 results: Professor[]
 search_term: string
 -->
-<div>This is search page by professor name</div>
+<div>
+  This is search page by professor name {% for result in results %}
+  <p>
+    <a class="underline text-blue-500" href="{% url 'prof_course' result.id %}">
+      {{ result.name }}</a
+    >
+  </p>
+  {% endfor %}
+</div>
 
 {% endblock %}
