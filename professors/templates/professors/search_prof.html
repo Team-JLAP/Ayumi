@@ -1,17 +1,12 @@
-{% extends 'professors/base.html' %}
-{% block content %}
-    <!-- This is search result page (Kento)  -->
-    <!-- /search/<str:prof_name>/ (search term)
+{% extends 'professors/base.html' %} {% block content %}
+<!-- This is search result page (Kento)  -->
+<!-- /search/<str:prof_name>/ (search term)
     eg) /search/bita -->
 
-    <!-- I'll pass the list of professors with their data -->
-    <div>
-        <p>searched by {{ search_term }}</p>
-        {% for prof in results %}
-            <p>{{ prof.name }}</p>
-            <p>{{ prof.email }}</p>
-            <p>{{ prof.avgRate }}</p>
-            <p><a class="underline text-blue-500" href="{% url 'prof_course' 1 %}">Click to Jump</a></p>
-        {% endfor %}
-    </div>
+<!-- given data
+results: Professor[]
+search_term: string
+-->
+<div>This is search page by professor name</div>
+
 {% endblock %}
