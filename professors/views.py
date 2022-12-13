@@ -29,12 +29,12 @@ def search_course(request, subject, course_number):
 
 def search_subject(request, subject):
     courses = Course.objects.filter(subject=subject)
-    return render(request, 'professors/search_subject.html', context={'results': courses})
+    return render(request, 'professors/search_course.html', context={'results': courses})
 
 def prof_course(request, prof_id):
     professor = Professor.objects.get(id=prof_id)
     courses = Course.objects.filter(professor=professor)
-    return render(request, 'professors/prof_course.html', context={'courses': courses})
+    return render(request, 'professors/search_course.html', context={'results': courses})
 
 def rating(request, prof_id, course_name):
     return render(request, 'professors/rating.html', context={'prof_id': prof_id})
@@ -50,5 +50,5 @@ def signup(request):
 def profile(request, user_id):
     return render(request, 'professors/profile.html')
 
-def profile_setting(request, user_id):
+def profile_setting(request):
     return render(request, 'professors/profile_setting.html')
