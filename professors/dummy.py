@@ -14,7 +14,7 @@ def generateRating(n):
         author = Profile.objects.order_by('?').first()
         rate = random.randint(1, 5)
         attendance = random.randint(1, 2) % 2 == 0
-        grade = random.choice(['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', 'E', 'F'])
+        grade = random.choice(['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', 'F', 'N'])
         semester = random.choice(['Fall', 'Spring', 'Summer']) + ' ' + str(random.randint(2010, 2022))
         Rating.objects.create(course=course, author=author, rate=rate, attendance=attendance, grade=grade, semester=semester)
 
