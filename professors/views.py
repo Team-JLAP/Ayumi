@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Course, Professor
-from django.db.models import Avg
+from .models import Course, Professor, Rating, Profile
+from .forms import RatingForm
+from django.shortcuts import redirect
 
 def home(request):
     return render(request, 'professors/home.html')
@@ -36,8 +37,24 @@ def prof_course(request, prof_id):
     courses = Course.objects.filter(professor=professor)
     return render(request, 'professors/search_course.html', context={'results': courses})
 
-def rating(request, prof_id, course_name):
-    return render(request, 'professors/rating.html', context={'prof_id': prof_id})
+def rating(request, course_id):
+    course = Course.objects.get(id=course_id)
+    result = ''
+    if request.method == "POST":
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            user = Profile.objects.get(user=request.user)
+            Rating.objects.create(course=course, semester=request.POST['semester'], author=user, rate=request.POST['rate'], 
+                                attendance=request.POST['attendance'], grade=request.POST['grade'], comment=request.POST['comment'])
+            return redirect('course_ratings', course_id=course_id)
+    grades = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', 'F', 'N', 'Other']
+    
+    context = {
+        'course': course,
+        'grades': grades,
+        'result': result
+    }
+    return render(request, 'professors/rating.html', context=context)
 
 
 
