@@ -75,4 +75,4 @@ class Rating(models.Model):
     rate = models.IntegerField()
     attendance = models.BooleanField(null=True)
     grade = models.CharField(max_length=10, blank=True, null=True)
-    comment = models.TextField(default='comment here')
+    comment = models.TextField(default='')

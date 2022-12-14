@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Course, Professor
-from django.db.models import Avg
+from .forms import RatingForm
 
 def home(request):
     return render(request, 'professors/home.html')
@@ -36,8 +36,12 @@ def prof_course(request, prof_id):
     courses = Course.objects.filter(professor=professor)
     return render(request, 'professors/search_course.html', context={'results': courses})
 
-def rating(request, prof_id, course_name):
-    return render(request, 'professors/rating.html', context={'prof_id': prof_id})
+def rating(request, prof_id, subject, course_number):
+    form = RatingForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'professors/rating.html', context=context)
 
 
 

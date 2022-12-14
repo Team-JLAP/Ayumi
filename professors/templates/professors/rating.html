@@ -1,7 +1,6 @@
-{% extends 'professors/base.html' %}
-{% block content %}
-    <div>
-        <p>create form</p>
-        <p>{{ prof_id }}</p>
-    </div>
+{% extends 'professors/base.html' %} {% block content %}
+<div>
+  <p>create form</p>
+  <form>{% csrf_token %}{{ form }}</form>
+</div>
 {% endblock %}
