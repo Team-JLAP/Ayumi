@@ -1,6 +1,57 @@
 {% extends 'professors/base.html' %} {% block content %}
 <div>
-  <p>create form</p>
-  <form>{% csrf_token %}{{ form }}</form>
+  <div class="header bg-green-200 h-16">
+    <p class="text-center">Header</p>
+  </div>
+  <div><h3 class="text-center">Rate {{ course.professor.name }}</h3></div>
+  <p>Result: {{ result }}</p>
+  <div class="flex w-2/5 mx-auto">
+    <form method="POST" class="flex items-center flex-col w-full">
+      {% csrf_token %}
+      <div class="flex justify-center">
+        <label for="semester">Semester: </label>
+        <input
+          required
+          id="semester"
+          name="semester"
+          type="text"
+          placeholder="Fall 2022"
+        />
+      </div>
+      <div>
+        <label for="rate">Rate: </label>
+        <input
+          required
+          type="number"
+          min="1"
+          max="5"
+          value="3"
+          id="rate"
+          name="rate"
+        />
+      </div>
+      <div>
+        <label for="attendance">Attendance: </label>
+        <select id="attendance" name="attendance">
+          <option value="True">Yes</option>
+          <option value="False">No</option>
+          <option value="None">Not Sure</option>
+        </select>
+      </div>
+      <div>
+        <label for="grade">Grade: </label>
+        <select id="grade" name="grade">
+          {% for grade in grades %}
+          <option value="{{ grade }}">{{ grade }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label for="comment">Comment: </label>
+        <input required id="comment" name="comment" type="text" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </div>
 {% endblock %}
