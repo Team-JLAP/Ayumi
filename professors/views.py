@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Course, Professor, Rating, Profile
 from .forms import RatingForm
 from django.shortcuts import redirect
+from django.contrib import messages
 
 def home(request):
     return render(request, 'professors/home.html')
@@ -57,7 +58,6 @@ def rating(request, course_id):
     return render(request, 'professors/rating.html', context=context)
 
 
-
 def login(request):
     return render(request, 'professors/login.html')
 
@@ -69,3 +69,8 @@ def profile(request, user_id):
 
 def profile_setting(request):
     return render(request, 'professors/profile_setting.html')
+
+
+def signup_redirect(request):
+    messages.error(request, "Something wrong here, it may be that you already have an account!")
+    return redirect('home')
