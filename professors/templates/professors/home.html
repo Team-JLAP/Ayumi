@@ -4,8 +4,11 @@
 <div>
   <!--prettier-ignore-->
   {% if messages %} {% for message in messages %}
+    {% if message.tags == 'error' %}
   <p class="text-red-500">{{ message }}</p>
-  {% endfor %} {%endif %}
+  {% elif message.tags == 'success' %}
+  <p class="text-green-500">{{ message }}</p>
+  {% endif %} {% endfor %} {%endif %}
   <p>This is landing page</p>
   <img src="{% static "admin/img/icon-clock.svg" %}" width="50px">
   <!--prettier-->

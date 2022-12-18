@@ -58,7 +58,6 @@ def rating(request, course_id):
     return render(request, 'professors/rating.html', context=context)
 
 
-
 def login(request):
     return render(request, 'professors/login.html')
 
@@ -73,5 +72,5 @@ def profile_setting(request):
 
 
 def signup_redirect(request):
-    messages.error(request, "Something wrong here, it may be that you already have account!")
+    messages.error(request, "Something wrong here, it may be that you already have an account!")
     return redirect('home')
